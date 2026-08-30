@@ -49,6 +49,12 @@ public class Card{
 		return trueStringValue;
 	}
 
+	//Num decks getter
+	public String getNumDecks(){
+		double numDecks = decks;
+		String deckStringValue = String.format("%.2f", numDecks);
+		return deckStringValue;
+	}
 
 	//Reset the counter method
 	public void reset(){
@@ -57,6 +63,7 @@ public class Card{
 	}
 
 	
+
 
 	
 

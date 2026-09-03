@@ -8,6 +8,7 @@ public class Gui{
 
 	private JLabel runningCount;
 	private JLabel trueCount;
+	private JLabel numDecks;
 	private Card card;
 
 	public static void main(String [] args){
@@ -36,7 +37,7 @@ public class Gui{
 
 		//JPanel and Label to show the Running Count
 		JPanel rCountPanel = new JPanel();
-		rCountPanel.setBounds(50, 30, 100, 15);
+		rCountPanel.setBounds(37, 30, 100, 15);
 		rCountPanel.setLayout(new BorderLayout());
 
 		JLabel rCountText = new JLabel();
@@ -52,7 +53,7 @@ public class Gui{
 
 		//JPanel and Label to show the True Count 
 		JPanel tCountPanel = new JPanel();
-		tCountPanel.setBounds(250, 30, 100, 15);
+		tCountPanel.setBounds(233, 30, 100, 15);
 		tCountPanel.setLayout(new BorderLayout());
 
 		JLabel tCountText = new JLabel();
@@ -66,17 +67,40 @@ public class Gui{
 		trueCount.setHorizontalAlignment(JLabel.CENTER);
 
 
+		//Jpanel and Label to show the Number of Decks remaining
+		JPanel numDecksPanel = new JPanel();
+		numDecksPanel.setBounds(137, 30, 100, 15);
+		numDecksPanel.setLayout(new BorderLayout());
+
+		JLabel numDecksText = new JLabel();
+		numDecksText.setText("Decks Remaining");
+		numDecksText.setVerticalAlignment(JLabel.CENTER);
+		numDecksText.setHorizontalAlignment(JLabel.CENTER);
+
+		numDecks = new JLabel();
+		numDecks.setText(card.getNumDecks());
+		numDecks.setVerticalAlignment(JLabel.CENTER);
+		numDecks.setHorizontalAlignment(JLabel.CENTER);
+
+		
+
+
+		JPanel greenPanel = new JPanel();
+		greenPanel.setBackground(Color.GREEN);
+		greenPanel.setBounds(150, 50, 75, 75);
+		//Original 50, 50
+		greenPanel.setLayout(new BorderLayout());
 
 		JPanel bluePanel = new JPanel();
-		bluePanel.setBackground(Color.BLUE);
-		bluePanel.setBounds(50, 50, 100, 100);
+		bluePanel.setBackground(Color.GREEN);
+		bluePanel.setBounds(50, 50, 75, 75);
 		//Original 50, 50
 		bluePanel.setLayout(new BorderLayout());
 
 
 		JPanel redPanel = new JPanel();
 		redPanel.setBackground(Color.RED);
-		redPanel.setBounds(250, 50, 100, 100);
+		redPanel.setBounds(250, 50, 75, 75);
 		//Original 250, 50
 		redPanel.setLayout(new BorderLayout());
 
@@ -106,7 +130,8 @@ public class Gui{
 
 
 		JButton resetButton = new JButton("Reset");
-		resetButton.setBounds(162, 62, 75, 75);
+		// Original 62
+		resetButton.setBounds(162, 147, 75, 50);
 		resetButton.setFocusable(false);
 		resetButton.addActionListener(e -> {
 			card.reset();
@@ -124,10 +149,16 @@ public class Gui{
 		frame.setLayout(null);
 		rCountPanel.add(rCountText);
 		tCountPanel.add(tCountText);
+		numDecksPanel.add(numDecksText);
 		bluePanel.add(runningCount);
+		
 		redPanel.add(trueCount);
+		greenPanel.add(numDecks);
 		frame.add(bluePanel);
+		
 		frame.add(redPanel);
+		frame.add(greenPanel);
+		frame.add(numDecksPanel);
 		frame.add(tCountPanel);
 		frame.add(rCountPanel);
 		frame.add(increaseCount);
@@ -135,11 +166,13 @@ public class Gui{
 		frame.add(neutralCount);
 		frame.add(resetButton);
 
+
 	}
 
 	private void updateCounts(){
 		runningCount.setText(card.getRunningCount());
 		trueCount.setText(card.getTrueCount());
+		numDecks.setText(card.getNumDecks());
 	}
 		
 		

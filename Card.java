@@ -60,6 +60,7 @@ public class Card{
 	public void reset(){
 		count = 0;
 		numberOfCards = 416.0;
+		decks = numberOfCards / 52.0; 
 	}
 
 	
